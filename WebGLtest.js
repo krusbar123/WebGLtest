@@ -21,6 +21,8 @@ var vertices = [
     1.0, -1.0, 0.0
 ];
 
+indices = [0, 1, 2];
+
 
 var vertex_buffer = gl.createBuffer();
 
@@ -28,6 +30,16 @@ gl.bindbuffer(gl.ARRAY_BUFFER, vertex_buffer);
 
 gl.bufferdata(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
+gl.bindBuffer(gl.ARRAY_BUFFER, null);
+
+var Index_Buffer = gl.createBuffer();
+
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
+
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices),
+
+
+    
 
 
     
