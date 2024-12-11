@@ -41,10 +41,6 @@ gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
 gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
 
-var uniform_buffer = gl.createBuffer();
-
-gl.bufferData(gl.UNIFORM_BUFFER, new Uint8Array(pixels), gl.STATIC_DRAW);
-
 
 
 
