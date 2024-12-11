@@ -21,7 +21,7 @@ var vertices = [
     1.0, -1.0, 0.0
 ];
 
-indices = [0, 1, 2];
+var indices = [0, 1, 2];
 
 
 var vertex_buffer = gl.createBuffer();
