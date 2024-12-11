@@ -21,6 +21,17 @@ var vertices = [
     1.0, -1.0, 0.0
 ];
 
+
+var vertex_buffer = gl.createBuffer();
+
+gl.bindbuffer(gl.ARRAY_BUFFER, vertex_buffer);
+
+gl.bufferdata(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+
+
+    
+
 var vertCode = 
     'attribute vec3 coordinates;' +
 
