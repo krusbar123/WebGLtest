@@ -31,14 +31,21 @@ gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
 
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
-gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
-var Index_Buffer = gl.createBuffer();
+var index_buffer = gl.createBuffer();
 
-gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
 
 gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
+
+var uniform_buffer = gl.createBuffer();
+
+gl.bufferData(gl.UNIFORM_BUFFER, new Uint8Array(pixels), gl.STATIC_DRAW);
+
+
+
+gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
     
     
@@ -80,7 +87,7 @@ gl.useProgram(shaderProgram);
 
 gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
 
-gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
          
 
 var coord = gl.getAttribLocation(shaderProgram, "coordinates");
