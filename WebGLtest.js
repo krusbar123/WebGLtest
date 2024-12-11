@@ -26,7 +26,7 @@ var indices = [0, 1, 2, 2, 3, 0];
 
 var pixels = [];
 
-for (int i = 0; i < (canvas.width * canvas.height); i++) {
+for (let i = 0; i < (canvas.width * canvas.height); i++) {
     pixels[i] = 0;
 }
     
