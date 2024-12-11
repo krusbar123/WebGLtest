@@ -36,12 +36,10 @@ var Index_Buffer = gl.createBuffer();
 
 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
 
-gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices),
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
 
     
-
-
     
 
 var vertCode = 
@@ -51,10 +49,28 @@ var vertCode =
     'gl_Position = vec4(coordinates, 1.0);' +
     '}';
 
+var vertShader = gl.createShader(gl.VERTEX_SHADER);
+
+gl.shaderSource(vertShader, vertCode);
+
+gl.compileShader(vertShader);
+
+
+
 var fragCode = 
     'void main(void) {' +
     'gl_FragColor = vec4(1.0, 0.5, 0.0, 1.0);' +
     '}';
+
+var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+
+gl.shaderSource(fragShader, fragCode);
+
+gl.compileShader(fragShader);
+
+
+
+    
     
     
 
