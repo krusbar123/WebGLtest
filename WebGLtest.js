@@ -44,15 +44,12 @@ gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
 
 var vertCode = 
     'attribute vec3 coordinates;' +
-
     'void main(void) {' +
     'gl_Position = vec4(coordinates, 1.0);' +
     '}';
 
 var vertShader = gl.createShader(gl.VERTEX_SHADER);
-
 gl.shaderSource(vertShader, vertCode);
-
 gl.compileShader(vertShader);
 
 
@@ -63,21 +60,43 @@ var fragCode =
     '}';
 
 var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
-
 gl.shaderSource(fragShader, fragCode);
-
 gl.compileShader(fragShader);
 
 
 var shaderProgram = gl.createProgram();
 
 gl.attachShader(shaderProgram, vertShader);
-
 gl.attachShader(shaderProgram, fragShader);
-
 gl.linkProgram(shaderProgram);
-
 gl.useProgram(shaderProgram);
+
+
+
+
+
+
+
+gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
+
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, Index_Buffer);
+         
+
+var coord = gl.getAttribLocation(shaderProgram, "coordinates");
+
+
+gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0); 
+         
+
+gl.enableVertexAttribArray(coord);
+
+
+
+
+
+
+
+    
 
 
     
