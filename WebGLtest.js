@@ -108,7 +108,8 @@ for (let i = 0; i < canvas.width * canvas.height; i++) {
 }
 
 
-
+const groundLoc = gl.getUniformLocation(shaderProgram, 'ground');
+gl.uniform1iv(groundLoc, ground);
 
 
 
