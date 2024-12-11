@@ -69,8 +69,20 @@ gl.shaderSource(fragShader, fragCode);
 gl.compileShader(fragShader);
 
 
+var shaderProgram = gl.createProgram();
+
+gl.attachShader(shaderProgram, vertShader);
+
+gl.attachShader(shaderProgram, fragShader);
+
+gl.linkProgram(shaderProgram);
+
+gl.useProgram(shaderProgram);
 
 
+
+
+    
 
     
     
