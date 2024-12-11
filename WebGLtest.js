@@ -26,9 +26,9 @@ var indices = [0, 1, 2];
 
 var vertex_buffer = gl.createBuffer();
 
-gl.bindbuffer(gl.ARRAY_BUFFER, vertex_buffer);
+gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
 
-gl.bufferdata(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
 gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
