@@ -24,6 +24,13 @@ var vertices = [
 
 var indices = [0, 1, 2, 2, 3, 0];
 
+var pixels = [];
+
+for (int i = 0; i < (canvas.width * canvas.height); i++) {
+    pixels[i] = 0;
+}
+    
+
 
 var vertex_buffer = gl.createBuffer();
 
