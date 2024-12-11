@@ -61,7 +61,8 @@ gl.compileShader(vertShader);
 
 
 var fragCode = 
-   'void main(void) {' +
+    'uniform sampler2D ground;' +
+    'void main(void) {' +
     'gl_FragColor = vec4(0.7, 0.5, 1.0, 1.0);' +
     '}';
 
