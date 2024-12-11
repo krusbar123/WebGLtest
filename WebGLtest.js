@@ -101,7 +101,7 @@ gl.enableVertexAttribArray(coord);
 
     
 // Set clear color to black, fully opaque
-gl.clearColor(0.0, 0.0, 1.0, 1.0);
+gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
 gl.enable(gl.DEPTH_TEST);
     
