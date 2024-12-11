@@ -24,13 +24,6 @@ var vertices = [
 
 var indices = [0, 1, 2, 2, 3, 0];
 
-var pixels = [];
-
-for (let i = 0; i < (canvas.width * canvas.height); i++) {
-    pixels[i] = 0;
-}
-    
-
 
 var vertex_buffer = gl.createBuffer();
 
@@ -107,6 +100,15 @@ gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);
 
 gl.enableVertexAttribArray(coord);
 
+
+
+var ground = new Uint8Array(canvas.width * canvas.height);
+
+for (let i = 0; i < canvas.width * canvas.height; i++) {
+    if (i < canvas.height * canvas.width / 5.0) {
+        ground[i] = 1;
+    }
+}
 
 
 
