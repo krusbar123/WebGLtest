@@ -184,7 +184,7 @@ function gameLoop() {
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     temp--;
 
-        
+    } 
         
 
 
