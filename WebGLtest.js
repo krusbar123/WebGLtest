@@ -1,12 +1,20 @@
 main();
 
+const canvas = document.getElementById("glcanvas");
 
+// Initialize the GL context
+const gl = canvas.getContext("webgl");
+
+var vertices;
+
+var indices;
+
+var ground;
+
+var texture;
 
 function main() {
-    const canvas = document.getElementById("glcanvas");
-    // Initialize the GL context
-    const gl = canvas.getContext("webgl");
-
+    
     // Only continue if WebGL is available and working
     if (!gl) {
     alert(
@@ -15,14 +23,14 @@ function main() {
     return;
     }
 
-    var vertices = [
+    vertices = [
         -1.0, 1.0, 0.0,
         -1.0, -1.0, 0.0,
         1.0, -1.0, 0.0,
         1.0, 1.0, 0.0
     ];
     
-    var indices = [0, 1, 2, 2, 3, 0];
+    indices = [0, 1, 2, 2, 3, 0];
     
     
     var vertex_buffer = gl.createBuffer();
@@ -99,7 +107,7 @@ function main() {
     
     
     
-    var ground = new Uint8Array(canvas.width * canvas.height * 4);
+    ground = new Uint8Array(canvas.width * canvas.height * 4);
     
     for (let i = 0; i < canvas.width * canvas.height; i++) {
         if (Math.random() < 0.3) {
@@ -112,7 +120,7 @@ function main() {
     
     
     
-    var texture = gl.createTexture();
+    texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
     
@@ -182,7 +190,6 @@ function gameLoop() {
     
     //Draw
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-    temp--;
 
     } 
         
