@@ -156,6 +156,12 @@ while (running) {
         let up = (i + canvas.width) * 4;
         let down = (i - canvas.width) * 4;
 
+        if (down < 0) {
+            continue;
+        }
+
+        
+
         //If dust here: move down
         if ((ground[current] || ground[current + 1] || ground[current + 2]) && !(ground[down] || ground[down + 1] || ground[down + 2])) {
             ground[down + 0] = ground[current + 0];
