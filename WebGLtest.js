@@ -162,7 +162,7 @@ while (running) {
 
         
 
-        //If dust here: move down
+        //If dust here and not below: move down
         if ((ground[current] || ground[current + 1] || ground[current + 2]) && !(ground[down] || ground[down + 1] || ground[down + 2])) {
             ground[down + 0] = ground[current + 0];
             ground[down + 1] = ground[current + 1];
