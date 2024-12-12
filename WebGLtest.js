@@ -143,8 +143,47 @@ gl.clear(gl.COLOR_BUFFER_BIT);
 
 gl.viewport(0, 0, canvas.width, canvas.height);
 
-gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
 
+
+
+
+var nextGround = new Uint8Array(canvas.width * canvas.height * 4);
+    
+
+    
+var runnung = true;
+    
+while (running) {
+
+    for (let i = 0; i < canvas.width * canvas.height; i++) {
+        let current = i * 4
+        let up = (i + canvas.width) * 4;
+        let down = (i - canvas.width) * 4;
+
+        //If dust here: move down
+        if ((ground[current] || ground[current + 1] || ground[current + 2]) && !(ground[down] || ground[down + 1] || ground[down + 2])) {
+            ground[down + 0] = ground[current + 0];
+            ground[down + 1] = ground[current + 1];
+            ground[down + 2] = ground[current + 2];
+            ground[down + 3] = ground[current + 3];
+
+            ground[current + 0] = 0;
+            ground[current + 1] = 0;
+            ground[current + 2] = 0;
+            ground[current + 3] = 0;
+        } 
+
+        
+        
+    }
+
+    //Update ground texture
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+
+    //Draw
+    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+}
 
 
 
