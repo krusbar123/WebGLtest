@@ -1,4 +1,3 @@
-main();
 
 const canvas = document.getElementById("glcanvas");
 
@@ -12,6 +11,8 @@ var indices;
 var ground;
 
 var texture;
+
+main();
 
 function main() {
     
