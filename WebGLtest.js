@@ -63,7 +63,7 @@ gl.compileShader(vertShader);
 var fragCode = 
     'uniform sampler2D ground;' +
     'void main(void) {' +
-    'gl_FragColor = vec4(texture2D(ground, gl_FragCoord.xy));' +
+    'gl_FragColor = vec4(texture2D(ground, gl_FragCoord.xy / vec2(640.0, 480.0)));' +
     '}';
 
 var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
