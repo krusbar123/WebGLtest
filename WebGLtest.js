@@ -111,9 +111,18 @@ for (let i = 0; i < canvas.width * canvas.height; i++) {
 }
 
 
-const groundLoc = gl.getUniformLocation(shaderProgram, 'ground');
-gl.uniform3fv(groundLoc, ground);
 
+var texture = gl.createTexture();
+gl.bindTexture(gl.TEXTURE_2D, texture);
+gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.FLOAT, ground);
+
+// Set texture parameters
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+// Pass texture to the shader
+var groundLoc = gl.getUniformLocation(shaderProgram, "ground");
+gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
 
 
     
