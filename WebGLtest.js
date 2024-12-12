@@ -188,7 +188,7 @@ function main() {
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
         temp--;
     }
-    
+    console.log("balls");
     
     
         
