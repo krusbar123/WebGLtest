@@ -99,7 +99,7 @@ gl.enableVertexAttribArray(coord);
 
 
 
-var ground = new Float32Array(canvas.width * canvas.height * 3);
+var ground = new Float32Array(canvas.width * canvas.height * 4);
 
 for (let i = 0; i < canvas.width * canvas.height; i++) {
     if (i < canvas.height * canvas.width / 5.0) {
