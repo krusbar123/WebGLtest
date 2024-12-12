@@ -173,8 +173,7 @@ function main() {
                 ground[current + 1] = 0;
                 ground[current + 2] = 0;
                 ground[current + 3] = 0;
-
-                console.log("yes");
+                
             } 
     
             
