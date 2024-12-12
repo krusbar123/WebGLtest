@@ -102,7 +102,7 @@ function main() {
     var ground = new Uint8Array(canvas.width * canvas.height * 4);
     
     for (let i = 0; i < canvas.width * canvas.height; i++) {
-        if (i < canvas.height * canvas.width / 5.0) {
+        if (Math.random < 0.3) {
             ground[(4 * i) + 0] = 255;
             ground[(4 * i) + 1] = 255;
             ground[(4 * i) + 2] = 0;
