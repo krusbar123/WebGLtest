@@ -99,17 +99,20 @@ gl.enableVertexAttribArray(coord);
 
 
 
-var ground = new Uint8Array(canvas.width * canvas.height);
+var ground = new Float32Array(canvas.width * canvas.height * 3);
 
 for (let i = 0; i < canvas.width * canvas.height; i++) {
     if (i < canvas.height * canvas.width / 5.0) {
-        ground[i] = 1;
+        ground[(4 * i) + 0] = 1.0;
+        ground[(4 * i) + 1] = 1.0;
+        ground[(4 * i) + 2] = 0.0;
+        ground[(4 * i) + 3] = 1.0;
     }
 }
 
 
 const groundLoc = gl.getUniformLocation(shaderProgram, 'ground');
-gl.uniform1iv(groundLoc, ground);
+gl.uniform3fv(groundLoc, ground);
 
 
 
