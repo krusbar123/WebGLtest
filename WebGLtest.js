@@ -146,10 +146,6 @@ gl.viewport(0, 0, canvas.width, canvas.height);
 
 
 
-
-var nextGround = new Uint8Array(canvas.width * canvas.height * 4);
-    
-
     
 var runnung = true;
     
