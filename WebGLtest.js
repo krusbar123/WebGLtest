@@ -145,11 +145,11 @@ function main() {
     
     
     
-    
+    var temp = 1000;
         
     var running = true;
         
-    while (running) {
+    while (temp > 0) {
     
         for (let i = 0; i < canvas.width * canvas.height; i++) {
             let current = i * 4
@@ -185,6 +185,7 @@ function main() {
     
         //Draw
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+        temp--;
     }
     
     
