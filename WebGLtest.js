@@ -114,7 +114,7 @@ for (let i = 0; i < canvas.width * canvas.height; i++) {
 
 var texture = gl.createTexture();
 gl.bindTexture(gl.TEXTURE_2D, texture);
-gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.FLOAT, ground);
+gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
 // Set texture parameters
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
