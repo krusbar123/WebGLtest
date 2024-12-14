@@ -129,6 +129,11 @@ function main() {
             ground[(4 * i) + 1] = 255;
             ground[(4 * i) + 2] = 0;
             ground[(4 * i) + 3] = 255;
+        } else {
+            ground[(4 * i) + 0] = 0;
+            ground[(4 * i) + 1] = 0;
+            ground[(4 * i) + 2] = 0;
+            ground[(4 * i) + 3] = 255;
         }
     }
     
