@@ -72,7 +72,16 @@ function main() {
     var fragCode = 
         'uniform sampler2D ground;' +
         'void main(void) {' +
-        'gl_FragColor = vec4(texture2D(ground, gl_FragCoord.xy / vec2(64.0, 48.0)));' +
+        'vec2 canvas = (64.0, 48.0);' +
+        'vec4 color;' +
+        'vec2 current = gl_FragCoord.xy / vec2(64.0, 48.0));' +
+        'vec2 over = current + vec2(0, 1 / canvas.y);' +
+        'vec2 under = current + vec2(0, 1 / canvas.y);' +
+        'if ( (texture2D(ground, over).xyz != vec3(0.0, 0.0, 0.0)) && (texture2D(ground, under).xyz == vec3(0.0, 0.0, 0.0)) ) {' +
+        'gl_FragColor = texture2D(ground, over)' +
+        '} else {' +
+        'gl_FragColor = texture2D(ground, current);' +
+        '}'
         '}';
     
     var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
@@ -132,7 +141,7 @@ function main() {
     // Set texture parameters for non-power-of-two (NPOT) textures
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    
+
     // Pass texture to the shader
     var groundLoc = gl.getUniformLocation(shaderProgram, "ground");
     gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
@@ -156,7 +165,7 @@ function main() {
 
 function gameLoop() {
 
-
+/*
     for (let i = 0; i < canvas.width * canvas.height; i++) {
         let current = i * 4
         let up = (i + canvas.width) * 4;
@@ -188,6 +197,8 @@ function gameLoop() {
     //Update ground texture
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+
+    */
     
     //Draw
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
