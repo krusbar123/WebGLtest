@@ -77,7 +77,7 @@ function main() {
         'vec2 current = gl_FragCoord.xy / screen;' +
         'vec2 over = current + vec2(0.0, 1.0 / screen.y);' +
         'vec2 under = current - vec2(0.0, 1.0 / screen.y);' +
-        'if (texture2D(ground, under).x == 0.0 && texture2D(ground, under).y == 0.0 && texture2D(ground, under).z == 0.0) {' +
+        'if (!(texture2D(ground, under).x) && !(texture2D(ground, under).y) && !(texture2D(ground, under).z)) {' +
         'gl_FragColor = texture2D(ground, over);' +
         '} else {' +
         'gl_FragColor = texture2D(ground, current);' +
