@@ -81,7 +81,7 @@ function main() {
         'gl_FragColor = texture2D(ground, over)' +
         '} else {' +
         'gl_FragColor = texture2D(ground, current);' +
-        '}'
+        '}' +
         '}';
     
     var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
