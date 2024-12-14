@@ -84,8 +84,14 @@ function main() {
         '            gl_FragColor = texture2D(ground, over);' +
         '        }' +
         '    } else {' +
-        '        if (texture2D(ground, under).w == 0.0) {' +
-        '            gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);' +
+        '        if (under.y < -(screen.y / 2.0)) {' +
+        '            gl_FragColor = texture2D(ground, current;' +
+        '        } else {' +
+        '            if (texture2D(ground, under).w == 0.0) {' +
+        '                gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);' +
+        '            } else {' +
+        '                gl_FragColor = texture2D(ground, current;, +
+        '            }' +
         '        }' +
         '    }' +
         '}';
@@ -170,7 +176,7 @@ function main() {
     gl.viewport(0, 0, canvas.width, canvas.height);
 
     
-    setInterval(gameLoop, 1000.0 / 0.3);
+    setInterval(gameLoop, 1000.0 / 3.0);
     
 }
 
