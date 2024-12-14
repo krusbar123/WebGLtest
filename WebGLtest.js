@@ -72,11 +72,10 @@ function main() {
     var fragCode = 
         'uniform sampler2D ground;' +
         'void main(void) {' +
-        'vec2 canvas = (64.0, 48.0);' +
-        'vec4 color;' +
+        'vec2 screen = (64.0, 48.0);' +
         'vec2 current = gl_FragCoord.xy / vec2(64.0, 48.0));' +
-        'vec2 over = current + vec2(0, 1 / canvas.y);' +
-        'vec2 under = current + vec2(0, 1 / canvas.y);' +
+        'vec2 over = current + vec2(0, 1 / screen.y);' +
+        'vec2 under = current + vec2(0, 1 / screen.y);' +
         'if ( (texture2D(ground, over).xyz != vec3(0.0, 0.0, 0.0)) && (texture2D(ground, under).xyz == vec3(0.0, 0.0, 0.0)) ) {' +
         'gl_FragColor = texture2D(ground, over)' +
         '} else {' +
