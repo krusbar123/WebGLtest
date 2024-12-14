@@ -176,7 +176,7 @@ function main() {
     gl.viewport(0, 0, canvas.width, canvas.height);
 
     
-    setInterval(gameLoop, 1000.0 / 600.0);
+    setInterval(gameLoop, 1000.0 / 120.0);
     
 }
 
