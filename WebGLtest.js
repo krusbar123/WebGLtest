@@ -205,7 +205,6 @@ function gameLoop() {
     //Draw
 
          //Update ground texture
-    gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
     
