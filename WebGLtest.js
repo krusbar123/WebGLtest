@@ -77,7 +77,7 @@ function main() {
         'vec2 current = gl_FragCoord.xy / screen;' +
         'vec2 over = current + vec2(0.0, 1.0 / screen.y);' +
         'vec2 under = current - vec2(0.0, 1.0 / screen.y);' +
-        'if ( (texture2D(ground, over).xyz != vec3(0.0, 0.0, 0.0)) && (texture2D(ground, under).xyz == vec3(0.0, 0.0, 0.0)) ) {' +
+        'if ( !(texture2D(ground, over).x == 0.0 && texture2D(ground, over).y == 0.0 && texture2D(ground, over).z == 0.0) && (texture2D(ground, under).x == 0.0 && texture2D(ground, under).y == 0.0 && texture2D(ground, under).z == 0.0) ) {' +
         'gl_FragColor = texture2D(ground, over);' +
         '} else {' +
         'gl_FragColor = texture2D(ground, current);' +
@@ -135,8 +135,8 @@ function main() {
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
     
     // Set texture parameters
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
         
     // Set texture parameters for non-power-of-two (NPOT) textures
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
