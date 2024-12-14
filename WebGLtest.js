@@ -70,6 +70,7 @@ function main() {
     
     
     var fragCode = 
+        'precision highp float;' +
         'uniform sampler2D ground;' +
         'void main(void) {' +
         'vec2 screen = vec2(64.0, 48.0);' +
