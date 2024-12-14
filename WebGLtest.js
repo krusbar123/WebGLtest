@@ -85,12 +85,12 @@ function main() {
         '        }' +
         '    } else {' +
         '        if (under.y < -(screen.y / 2.0)) {' +
-        '            gl_FragColor = texture2D(ground, current;' +
+        '            gl_FragColor = texture2D(ground, current);' +
         '        } else {' +
         '            if (texture2D(ground, under).w == 0.0) {' +
         '                gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);' +
         '            } else {' +
-        '                gl_FragColor = texture2D(ground, current;' +
+        '                gl_FragColor = texture2D(ground, current);' +
         '            }' +
         '        }' +
         '    }' +
