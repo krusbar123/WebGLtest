@@ -73,7 +73,7 @@ function main() {
         'precision highp float;' +
         'uniform sampler2D ground;' +
         'void main(void) {' +
-        '    vec2 screen = vec2(64.0, 48.0);' +
+        '    vec2 screen = vec2(640.0, 480.0);' +
         '    vec2 current = gl_FragCoord.xy / screen;' +
         '    vec2 over = current + vec2(0.0, 1.0 / screen.y);' +
         '    vec2 under = current - vec2(0.0, 1.0 / screen.y);' +
@@ -176,7 +176,7 @@ function main() {
     gl.viewport(0, 0, canvas.width, canvas.height);
 
     
-    setInterval(gameLoop, 1000.0 / 3.0);
+    setInterval(gameLoop, 1000.0 / 60.0);
     
 }
 
