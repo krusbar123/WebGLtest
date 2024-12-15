@@ -142,7 +142,7 @@ function main() {
         groundColor = [50, 215, 50];
     } else if (Math.random() < 0.75) {
         //snow
-        groundColor = [240, 240, 240];
+        groundColor = [255, 255, 255];
     } else {
         //stone
         groundColor = [180, 180, 180];
