@@ -12,9 +12,10 @@ var ground;
 
 var texture;
 
-const targetFPS = 60; // Desired FPS
-const frameInterval = 1000 / targetFPS; // Milliseconds per frame
+const targetFPS = 60.0; // Desired FPS
+const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
+let FPS;
 
 main();
 
@@ -212,6 +213,7 @@ function gameLoop(currentTime) {
 
     if (elapsedTime >= frameInterval) {
         lastFrameTime = currentTime;
+        FPS = 1000.0 / elapsedTime;
     
              //Update ground texture
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
