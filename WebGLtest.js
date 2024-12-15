@@ -4,6 +4,8 @@ const canvas = document.getElementById("glcanvas");
 // Initialize the GL context
 const gl = canvas.getContext("webgl");
 
+const ctx = canvas.getContext("2d");
+
 var vertices;
 
 var indices;
