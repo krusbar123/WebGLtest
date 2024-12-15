@@ -19,6 +19,32 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+const images = ["Assets/Body_Black.png"];
+
+let loadedImages = [];
+
+
+// Function to load a single image
+function loadImage(src, index) {
+    const img = new Image();   // Create a new Image object
+    img.src = src;             // Set the image source
+
+    img.onload = function () { // When the image loads
+        loadedImages[index] = img;  // Store the loaded image at the correct index
+    };
+
+    img.onerror = function () {     // Handle load error
+        console.error("Failed to load image:", src);
+    };
+}
+
+// Load all images
+for (let i = 0; i < images.length; i++) {
+    loadImage(images[i], i);
+}
+
+
+
 main();
 
 function main() {
