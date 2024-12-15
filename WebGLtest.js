@@ -198,7 +198,7 @@ function main() {
     gl.viewport(0, 0, canvas.width, canvas.height);
 
     
-    setInterval(gameLoop, 1000.0 / 60.0);
+    requestAnimationFrame(gameLoop);
     
 }
 
