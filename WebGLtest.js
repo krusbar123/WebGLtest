@@ -138,8 +138,9 @@ function main() {
         
         
         if (y <= (((noise.perlin2((x / canvas.width) * 4.0, 0.1234) + 1.0) * canvas.height / 3.0 ) - 100)) {
-            ground[(4 * i) + 0] = 255;
-            ground[(4 * i) + 1] = 255;
+            let light = 50 * Math.random();
+            ground[(4 * i) + 0] = 205 + light;
+            ground[(4 * i) + 1] = 205 + light;
             ground[(4 * i) + 2] = 0;
             ground[(4 * i) + 3] = 255;
         } else {
