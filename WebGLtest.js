@@ -145,7 +145,7 @@ function main() {
         groundColor = [255, 255, 255];
     } else {
         //stone
-        groundColor = [180, 180, 180];
+        groundColor = [160, 160, 160];
     }
 
     
