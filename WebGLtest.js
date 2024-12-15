@@ -137,7 +137,7 @@ function main() {
         let x = i - (y * canvas.width);
         
         
-        if (y <= ((perlin.get(x, 1337) + 1) * canvas.height / 2.0 )) {
+        if (y <= ((perlin.get(x / canvas.width, 1337) + 1) * canvas.height / 2.0 )) {
             ground[(4 * i) + 0] = 255;
             ground[(4 * i) + 1] = 255;
             ground[(4 * i) + 2] = 0;
