@@ -132,6 +132,24 @@ function main() {
     
     ground = new Uint8Array(canvas.width * canvas.height * 4);
     
+    var groundColor = [];
+
+    if (Math.random() < 0.25) {
+        //sand
+        groundColor = [240, 215, 160];
+    } else if (Math.random() < 0.5) {
+        //grass
+        groundColor = [50, 215, 50];
+    } else if (Math.random() < 0.75) {
+        //snow
+        groundColor = [240, 240, 240];
+    } else {
+        //stone
+        groundColor = [180, 180, 180];
+    }
+
+    
+    
     for (let i = 0; i < canvas.width * canvas.height; i++) {
         let y = Math.floor(i / canvas.width);
         let x = i - (y * canvas.width);
@@ -139,9 +157,9 @@ function main() {
         
         if (y <= (((noise.perlin2((x / canvas.width) * 4.0, 0.1234) + 1.0) * canvas.height / 2.0 ) - 75)) {
             let light = 0.95 + (0.05 * Math.random());
-            ground[(4 * i) + 0] = 240 * light;
-            ground[(4 * i) + 1] = 215 * light;
-            ground[(4 * i) + 2] = 160 * light;
+            ground[(4 * i) + 0] = groundColor[0] * light;
+            ground[(4 * i) + 1] = groundColor[1] * light;
+            ground[(4 * i) + 2] = groundColor[2] * light;
             ground[(4 * i) + 3] = 255;
         } else {
             ground[(4 * i) + 0] = 0;
