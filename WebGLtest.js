@@ -137,7 +137,7 @@ function main() {
         let x = i - (y * canvas.width);
         
         
-        if (y <= ((noise.perlin2((x / canvas.width) / 4, 0) + 1) * canvas.height / 2.0 )) {
+        if (y <= ((noise.perlin2((x / canvas.width) / 40, 0) + 1) * canvas.height / 2.0 )) {
             ground[(4 * i) + 0] = 255;
             ground[(4 * i) + 1] = 255;
             ground[(4 * i) + 2] = 0;
