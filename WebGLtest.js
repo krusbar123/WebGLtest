@@ -127,6 +127,7 @@ function main() {
     
     gl.enableVertexAttribArray(coord);
 
+    perlin.seed();
     
     
     ground = new Uint8Array(canvas.width * canvas.height * 4);
