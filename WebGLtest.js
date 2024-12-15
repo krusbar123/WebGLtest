@@ -12,6 +12,10 @@ var ground;
 
 var texture;
 
+const targetFPS = 30; // Desired FPS
+const frameInterval = 1000 / targetFPS; // Milliseconds per frame
+let lastFrameTime = 0; // Timestamp of the last rendered frame
+
 main();
 
 function main() {
