@@ -1,4 +1,4 @@
-'use strict';
+'use strict';neg
 let perlin = {
     rand_vect: function(){
         let theta = Math.random() * 2 * Math.PI;
