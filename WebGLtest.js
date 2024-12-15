@@ -127,7 +127,7 @@ function main() {
     
     gl.enableVertexAttribArray(coord);
 
-    perlin.seed();
+    noise.seed(Math.random());
     
     
     ground = new Uint8Array(canvas.width * canvas.height * 4);
@@ -137,7 +137,7 @@ function main() {
         let x = i - (y * canvas.width);
         
         
-        if (y <= ((perlin.get(x / canvas.width, 1337) + 1) * canvas.height / 2.0 )) {
+        if (y <= ((noise.perlin2(x / canvas.width, 0) + 1) * canvas.height / 2.0 )) {
             ground[(4 * i) + 0] = 255;
             ground[(4 * i) + 1] = 255;
             ground[(4 * i) + 2] = 0;
