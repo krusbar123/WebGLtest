@@ -214,6 +214,8 @@ function gameLoop(currentTime) {
     if (elapsedTime >= frameInterval) {
         lastFrameTime = currentTime;
         FPS = 1000.0 / elapsedTime;
+
+        console.log(FPS);
     
              //Update ground texture
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
