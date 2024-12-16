@@ -23,8 +23,12 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
-new Audio("Assets/Music.mp3");
+AudioElement = new Audio("Assets/Music.mp3");
 
+myAudioElement.addEventListener("canplaythrough", (event) => {
+  /* the audio is now playable; play it if permissions allow */
+  myAudioElement.play();
+});
 
 // Function to load a single image
 function loadImage(src, index) {
