@@ -23,9 +23,11 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
-canvas.addEventListener("click", (event) => {
+canvas.addEventListener("click", start);
 
-canvas.removeEventListener("click", (event));
+function start() {
+
+canvas.removeEventListener("click", start);
 
 const audioElement = new Audio("Assets/Music.mp3");
 
@@ -57,7 +59,7 @@ for (let i = 0; i < images.length; i++) {
 
 main();
 
-});
+}
 
 function main() {
     
