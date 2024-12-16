@@ -23,6 +23,11 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
+addEventListener("click", (event) => {});
+
+onclick = (event) => {};
+
+
 const audioElement = new Audio("Assets/Music.mp3");
 
 audioElement.addEventListener("canplaythrough", (event) => {
