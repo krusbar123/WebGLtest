@@ -25,11 +25,11 @@ let loadedImages = [];
 
 const startScreen = document.getElementById('StartScreen');
 
-startScreen.addEventListener("click", start);
+canvas.addEventListener("click", start);
 
 function start() {
 
-startScreen.removeEventListener("click", start);
+canvas.removeEventListener("click", start);
 
 startScreen.style.display = 'none';
   
