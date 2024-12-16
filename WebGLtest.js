@@ -23,12 +23,16 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
+const startScreen = document.getElementById('StartScreen');
+
 canvas.addEventListener("click", start);
 
 function start() {
 
 canvas.removeEventListener("click", start);
 
+startScreen.style.display = 'none';
+  
 const audioElement = new Audio("Assets/Music.mp3");
 
 audioElement.addEventListener("canplaythrough", (event) => {
