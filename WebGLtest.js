@@ -23,6 +23,8 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
+new Audio("Assets/Music.mp3");
+
 
 // Function to load a single image
 function loadImage(src, index) {
