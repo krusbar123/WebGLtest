@@ -23,10 +23,7 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
-addEventListener("click", (event) => {});
-
-onclick = (event) => {};
-
+canvas.addEventListener("click", (event) => {});
 
 const audioElement = new Audio("Assets/Music.mp3");
 
