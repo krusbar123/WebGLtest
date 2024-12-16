@@ -25,7 +25,7 @@ let loadedImages = [];
 
 canvas.addEventListener("click", (event) => {
 
-canvas.removeEventListener("click", (event))
+canvas.removeEventListener("click", (event));
 
 const audioElement = new Audio("Assets/Music.mp3");
 
