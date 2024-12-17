@@ -178,6 +178,24 @@ function main() {
 
   
     createProgram(0, vertCode, fragCode);
+
+
+
+    vertCode = 
+        'attribute vec3 coordinates;' +
+        'void main(void) {' +
+        'gl_Position = vec4(coordinates, 1.0);' +
+        '}';
+
+
+    fragCode = 
+        'precision highp float;' +
+        'uniform sampler2D texture;' +
+        'void main(void) {' +
+        'gl_FragColor = texture2D(texture, current);' +
+        '}';
+
+    createProgram(1, vertCode, fragCode);
     
     
      
