@@ -201,7 +201,7 @@ function main() {
     vertCode = 
         'attribute vec3 coordinates;' +
         'void main(void) {' +
-        'gl_Position = vec4(coordinates, 1.0);' +
+        'gl_Position = vec4(coordinates / vec3(640.0, 480.0, 1.0), 1.0);' +
         '}';
 
 
