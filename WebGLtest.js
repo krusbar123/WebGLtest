@@ -199,7 +199,7 @@ function main() {
 
 
     vertCode = 
-        'attribute vec3 coordinates;' +
+        'attribute vec3 coords;' +
         'void main(void) {' +
         'gl_Position = vec4(coordinates / vec3(640.0, 480.0, 1.0), 1.0);' +
         '}';
@@ -225,7 +225,7 @@ function main() {
 
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);        
-    var coord2 = gl.getAttribLocation(shaderProgram[1], "coordinates");
+    var coord2 = gl.getAttribLocation(shaderProgram[1], "coords");
     gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord2);
 
