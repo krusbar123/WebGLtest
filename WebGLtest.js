@@ -17,6 +17,11 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+    
+
+var vertCode;
+var fragCode;
+
 var vertex_buffer = [];
 var index_buffer = [];
 
@@ -131,10 +136,7 @@ function main() {
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     
     
-    
-    
-    var vertCode;
-    var fragCode;
+
         
         
     
@@ -187,7 +189,6 @@ function main() {
     
     gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0); 
              
-    
     gl.enableVertexAttribArray(coord);
 
     noise.seed(Math.random());
