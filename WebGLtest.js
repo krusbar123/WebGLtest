@@ -106,6 +106,7 @@ function createProgram(id, vertSource, fragSource) {
   gl.attachShader(shaderProgram[id], fragShader[id]);
   gl.linkProgram(shaderProgram[id]);
 
+  console.log("Program created!");
   return;
 }
 
