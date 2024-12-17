@@ -2,7 +2,7 @@
 const canvas = document.getElementById("glcanvas");
 
 // Initialize the GL context
-const gl = canvas.getContext('experimental-webgl', {preserveDrawingBuffer: true});
+const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
 
 var vertices;
 
