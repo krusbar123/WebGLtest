@@ -367,7 +367,7 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
     
-        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(0, 1, 2, 2, 3, 0), gl.STATIC_DRAW);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
 
         gl.useProgram(shaderProgram[1]);
 
