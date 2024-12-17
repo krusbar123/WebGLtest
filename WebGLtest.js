@@ -67,7 +67,11 @@ function loadImage(src, index) {
         console.log("Balls");
     };
 
+    console.log(imagesLoaded);
+    console.log(images.length);
+    
     if (imagesLoaded === images.length) {
+        console.log("Images Loaded!");
         main();
     }
 
