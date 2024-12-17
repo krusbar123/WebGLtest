@@ -213,7 +213,7 @@ function main() {
         'precision highp float;' +
         'uniform sampler2D texture;' +
         'void main(void) {' +
-        'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0));' +
+        'gl_FragColor = texture2D(texture, gl_FragCoord.xy * vec2(640.0, 480.0));' +
         '}';
 
     createProgram(1, vertCode, fragCode);
@@ -341,6 +341,8 @@ function gameLoop(currentTime) {
         FPS = 1000.0 / elapsedTime;
 
         //console.log(FPS);
+
+        gl.clear(gl.COLOR_BUFFER_BIT);
     
              //Update ground texture
         gl.activeTexture(gl.TEXTURE0);
