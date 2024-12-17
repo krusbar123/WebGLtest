@@ -66,6 +66,10 @@ function loadImage(src, index) {
         imagesLoaded++;
     };
 
+    if (imagesLoaded === images.length) {
+        main();
+    }
+
     img.onerror = function () {     // Handle load error
         console.error("Failed to load image:", src);
     };
@@ -77,9 +81,8 @@ for (let i = 0; i < images.length; i++) {
 }
 
 
-if (imagesLoaded === images.length) {
-    main();
-}
+
+
     
 }
 
