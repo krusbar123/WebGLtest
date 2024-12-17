@@ -17,6 +17,9 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+var vertex_buffer = [];
+var index_buffer = [];
+
 var vertShader = [];
 var fragShader = [];
 var shaderProgram = [];
@@ -111,10 +114,6 @@ function main() {
     
     indices = [0, 1, 2, 2, 3, 0];
 
-
-    var vertex_buffer = [];
-  
-    var index_buffer = [];
     
     vertex_buffer[0] = gl.createBuffer();
     
