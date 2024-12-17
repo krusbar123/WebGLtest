@@ -33,6 +33,10 @@ var shaderProgram = [];
 var tankX = [0];
 var tankY = [0];
 
+var groundLoc;
+
+var textureLoc;
+
 const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
@@ -305,12 +309,12 @@ function main() {
   
     // Pass texture to the shader
     gl.useProgram(shaderProgram[0]);
-    var groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
+    groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
     gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
 
         // Pass texture to the shader
     gl.useProgram(shaderProgram[1]);
-    var textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
+    textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
     gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
     
     
@@ -348,6 +352,10 @@ function gameLoop(currentTime) {
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
         gl.useProgram(shaderProgram[0]);
+
+         // Pass texture to the shader
+        groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
+        gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
       
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     
@@ -369,6 +377,9 @@ function gameLoop(currentTime) {
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
 
         gl.useProgram(shaderProgram[1]);
+
+        textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
+        gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
 
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
     
