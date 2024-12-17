@@ -277,7 +277,7 @@ function gameLoop(currentTime) {
 
 
 
-      canvas.drawImage(loadedImages[0], tankX[0], tankY[0]);
+      ctx.drawImage(loadedImages[0], tankX[0], tankY[0]);
 
     }
     requestAnimationFrame(gameLoop);
