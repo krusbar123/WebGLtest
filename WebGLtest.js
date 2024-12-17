@@ -4,8 +4,6 @@ const canvas = document.getElementById("glcanvas");
 // Initialize the GL context
 const gl = canvas.getContext("webgl");
 
-const ctx = canvas.getContext("2d");
-
 var vertices;
 
 var indices;
@@ -275,9 +273,7 @@ function gameLoop(currentTime) {
     
         gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
-
-
-      ctx.drawImage(loadedImages[0], tankX[0], tankY[0]);
+        
 
     }
     requestAnimationFrame(gameLoop);
