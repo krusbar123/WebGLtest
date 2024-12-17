@@ -23,6 +23,9 @@ const tankSize = 16;
 var vertCode;
 var fragCode;
 
+var vertCode2;
+var fragCode2;
+
 var vertex_buffer = [];
 var index_buffer = [];
 
