@@ -23,9 +23,6 @@ const tankSize = 16;
 var vertCode;
 var fragCode;
 
-var vertCode2;
-var fragCode2;
-
 var vertex_buffer = [];
 var index_buffer = [];
 
@@ -205,21 +202,21 @@ function main() {
 
 
 
-    vertCode2 = 
+    vertCode = 
         'attribute vec3 coords;' +
         'void main(void) {' +
         'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
         '}';
 
 
-    fragCode2 = 
+    fragCode = 
         'precision highp float;' +
         'uniform sampler2D texture;' +
         'void main(void) {' +
         'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0));' +
-        '}';
+        '}b';
 
-    createProgram(1, vertCode2, fragCode2);
+    createProgram(1, vertCode, fragCode);
     
     
      
