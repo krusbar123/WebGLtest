@@ -37,6 +37,8 @@ const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
 
+var imagesLoaded = 0;
+
 const startScreen = document.getElementById('StartScreen');
 
 canvas.addEventListener("click", start);
@@ -61,6 +63,7 @@ function loadImage(src, index) {
 
     img.onload = function () { // When the image loads
         loadedImages[index] = img;  // Store the loaded image at the correct index
+        imagesLoaded++;
     };
 
     img.onerror = function () {     // Handle load error
@@ -74,9 +77,10 @@ for (let i = 0; i < images.length; i++) {
 }
 
 
-
-main();
-
+if (imagesLoaded === images.length) {
+    main();
+}
+    
 }
 
 function createProgram(id, vertSource, fragSource) {
