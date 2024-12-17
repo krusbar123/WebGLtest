@@ -23,9 +23,6 @@ const tankSize = 16;
 var vertCode;
 var fragCode;
 
-var vertCode2;
-var fragCode2;
-
 var vertex_buffer = [];
 var index_buffer = [];
 
@@ -200,21 +197,21 @@ function main() {
 
 
 
-    vertCode2 = 
+    vertCode = 
         'attribute vec3 coordinates;' +
         'void main(void) {' +
         'gl_Position = vec4(coordinates, 1.0);' +
         '}';
 
 
-    fragCode2 = 
+    fragCode = 
         'precision highp float;' +
         'uniform sampler2D texture;' +
         'void main(void) {' +
         'gl_FragColor = texture2D(texture, current);' +
         '}';
 
-    createProgram(1, vertCode2, fragCode2);
+    createProgram(1, vertCode, fragCode);
     
     
      
@@ -315,7 +312,7 @@ function main() {
         // Pass texture to the shader
     gl.useProgram(shaderProgram[1]);
     var textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
-    gl.uniform1i(groundLoc, 1);  // 0 corresponds to TEXTURE0
+    gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
     
     
         
