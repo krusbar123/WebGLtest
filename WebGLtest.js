@@ -64,6 +64,7 @@ function loadImage(src, index) {
     img.onload = function () { // When the image loads
         loadedImages[index] = img;  // Store the loaded image at the correct index
         imagesLoaded++;
+        console.log("Balls");
     };
 
     if (imagesLoaded === images.length) {
