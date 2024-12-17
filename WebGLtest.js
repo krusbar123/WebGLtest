@@ -10,13 +10,14 @@ var indices;
 
 var ground;
 
-var texture;
+var texture = [];
 
 const targetFPS = 60.0; // Desired FPS
 const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+const tankSize = 16;
     
 
 var vertCode;
@@ -132,9 +133,14 @@ function main() {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
     
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
-    
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
-    
+
+
+
+
+
+    vertex_buffer[1] = gl.createBuffer();
+
+    index_buffer[1] = gl.createBuffer();
     
 
         
@@ -205,6 +211,13 @@ function main() {
     gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord);
 
+
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);        
+    var coord2 = gl.getAttribLocation(shaderProgram[1], "coordinates");
+    gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
+    gl.enableVertexAttribArray(coord2);
+
     noise.seed(Math.random());
     
     
@@ -249,9 +262,27 @@ function main() {
     
     
     
-    texture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, texture);
+    texture[0] = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, texture[0]);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+    
+    // Set texture parameters
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+        
+    // Set texture parameters for non-power-of-two (NPOT) textures
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+
+
+    
+
+    texture[1] = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, texture[1]);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, loadedImages[0]);
     
     // Set texture parameters
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
@@ -267,6 +298,11 @@ function main() {
     gl.useProgram(shaderProgram[0]);
     var groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
     gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
+
+        // Pass texture to the shader
+    gl.useProgram(shaderProgram[1]);
+    var textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
+    gl.uniform1i(groundLoc, 1);  // 0 corresponds to TEXTURE0
     
     
         
@@ -294,6 +330,8 @@ function gameLoop(currentTime) {
         //console.log(FPS);
     
              //Update ground texture
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture[0]);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
     
         gl.clear(gl.COLOR_BUFFER_BIT);
@@ -305,6 +343,27 @@ function gameLoop(currentTime) {
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     
         gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+
+
+        let verts = [
+            tankX[0] - tankSize/2.0, tankY[0] + tankSize/2.0, 0.0,
+            tankX[0] - tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
+            tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
+            tankX[0] + tankSize/2.0, tankY[0] + tankSize/2.0, 0.0];
+        
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);
+    
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
+    
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(0, 1, 2, 2, 3, 0), gl.STATIC_DRAW);
+
+        gl.useProgram(shaderProgram[1]);
+
+        gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+    
+    
 
         
 
