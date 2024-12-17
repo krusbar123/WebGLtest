@@ -182,13 +182,9 @@ function main() {
     
      
 
-             
-    
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);        
     var coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
-    
-    
-    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0); 
-             
+    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord);
 
     noise.seed(Math.random());
