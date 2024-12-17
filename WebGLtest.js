@@ -64,16 +64,14 @@ function loadImage(src, index) {
     img.onload = function () { // When the image loads
         loadedImages[index] = img;  // Store the loaded image at the correct index
         imagesLoaded++;
-        console.log("Balls");
-    };
-
-    console.log(imagesLoaded);
-    console.log(images.length);
-    
-    if (imagesLoaded === images.length) {
-        console.log("Images Loaded!");
+            
+        if (imagesLoaded === images.length) {
+            console.log("Images Loaded!");
         main();
     }
+        
+    };
+
 
     img.onerror = function () {     // Handle load error
         console.error("Failed to load image:", src);
