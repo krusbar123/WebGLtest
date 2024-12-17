@@ -84,18 +84,22 @@ function main() {
     ];
     
     indices = [0, 1, 2, 2, 3, 0];
+
+
+    var vertex_buffer = [];
+  
+    var index_buffer = [];
     
+    vertex_buffer[0] = gl.createBuffer();
     
-    var vertex_buffer = gl.createBuffer();
-    
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
     
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
     
     
-    var index_buffer = gl.createBuffer();
+    index_buffer[0] = gl.createBuffer();
     
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
     
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
     
@@ -104,24 +108,19 @@ function main() {
     
     
     
-    
-    
+    var vertCode;
+    var fragCode;
         
         
     
-    var vertCode = 
+    vertCode = 
         'attribute vec3 coordinates;' +
         'void main(void) {' +
         'gl_Position = vec4(coordinates, 1.0);' +
         '}';
-    
-    var vertShader = gl.createShader(gl.VERTEX_SHADER);
-    gl.shaderSource(vertShader, vertCode);
-    gl.compileShader(vertShader);
-    
-    
-    
-    var fragCode = 
+
+
+    fragCode = 
         'precision highp float;' +
         'uniform sampler2D ground;' +
         'void main(void) {' +
@@ -147,31 +146,45 @@ function main() {
         '        }' +
         '    }' +
         '}';
+  
+
+    var vertShader = [];
+    var fragShader = [];
+    var shaderProgram = [];
+  
+    vertShader[0] = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertShader[0], vertCode);
+    gl.compileShader(vertShader[0]);
     
-    var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
-    gl.shaderSource(fragShader, fragCode);
-    gl.compileShader(fragShader);
+
+    
+  
+    fragShader[0] = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragShader[0], fragCode);
+    gl.compileShader(fragShader[0]);
+    
+
+    
+  
+    shaderProgram[0] = gl.createProgram();
+    
+    gl.attachShader(shaderProgram[0], vertShader[0]);
+    gl.attachShader(shaderProgram[0], fragShader[0]);
+    gl.linkProgram(shaderProgram[0]);
+    gl.useProgram(shaderProgram[0]);
     
     
-    var shaderProgram = gl.createProgram();
-    
-    gl.attachShader(shaderProgram, vertShader);
-    gl.attachShader(shaderProgram, fragShader);
-    gl.linkProgram(shaderProgram);
-    gl.useProgram(shaderProgram);
     
     
     
     
     
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
     
-    
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-    
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
              
     
-    var coord = gl.getAttribLocation(shaderProgram, "coordinates");
+    var coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
     
     
     gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0); 
