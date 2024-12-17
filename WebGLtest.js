@@ -277,7 +277,7 @@ function main() {
 
 
 
-    
+    console.log(loadedImages[0])
 
     texture[1] = gl.createTexture();
     gl.activeTexture(gl.TEXTURE1);
