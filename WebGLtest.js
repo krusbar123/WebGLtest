@@ -19,6 +19,9 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+var tankX = [0];
+var tankY = [0];
+
 const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
@@ -272,10 +275,12 @@ function gameLoop(currentTime) {
     
         gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
-    }
-        
-    requestAnimationFrame(gameLoop);
 
+
+      canvas.drawImage(loadedImages[0], tankX[0], tankY[0]);
+
+    }
+    requestAnimationFrame(gameLoop);
 }
 
 
