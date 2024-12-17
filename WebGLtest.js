@@ -372,7 +372,7 @@ function gameLoop(currentTime) {
 
         gl.useProgram(shaderProgram[1]);
 
-        gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+        //gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
     
     
 
