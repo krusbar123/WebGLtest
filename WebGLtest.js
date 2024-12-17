@@ -210,7 +210,7 @@ function main() {
         'uniform sampler2D texture;' +
         'void main(void) {' +
         'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0));' +
-        '}';
+        '}b';
 
     createProgram(1, vertCode, fragCode);
     
@@ -287,8 +287,6 @@ function main() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
 
-
-    console.log(loadedImages[0])
 
     texture[1] = gl.createTexture();
     gl.activeTexture(gl.TEXTURE1);
@@ -372,7 +370,7 @@ function gameLoop(currentTime) {
 
         gl.useProgram(shaderProgram[1]);
 
-        //gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
     
     
 
