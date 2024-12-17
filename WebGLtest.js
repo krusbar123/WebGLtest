@@ -205,21 +205,21 @@ function main() {
 
 
 
-    vertCode = 
+    vertCode2 = 
         'attribute vec3 coords;' +
         'void main(void) {' +
         'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
         '}';
 
 
-    fragCode = 
+    fragCode2 = 
         'precision highp float;' +
         'uniform sampler2D texture;' +
         'void main(void) {' +
         'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0));' +
         '}';
 
-    createProgram(1, vertCode, fragCode);
+    createProgram(1, vertCode2, fragCode2);
     
     
      
