@@ -17,6 +17,10 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
+var vertShader = [];
+var fragShader = [];
+var shaderProgram = [];
+
 var tankX = [0];
 var tankY = [0];
 
@@ -65,6 +69,28 @@ for (let i = 0; i < images.length; i++) {
 main();
 
 }
+
+function createProgram(id, vertSource, fragSource) {
+
+  vertShader[id] = gl.createShader(gl.VERTEX_SHADER);
+  gl.shaderSource(vertShader[id], vertSource);
+  gl.compileShader(vertShader[id]);
+  
+
+  fragShader[id] = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(fragShader[id], fragSource);
+  gl.compileShader(fragShader[id]);
+  
+
+  shaderProgram[id] = gl.createProgram();
+  gl.attachShader(shaderProgram[id], vertShader[id]);
+  gl.attachShader(shaderProgram[id], fragShader[id]);
+  gl.linkProgram(shaderProgram[id]);
+
+  return;
+}
+
+
 
 function main() {
     
@@ -148,40 +174,13 @@ function main() {
         '}';
   
 
-    var vertShader = [];
-    var fragShader = [];
-    var shaderProgram = [];
-  
-    vertShader[0] = gl.createShader(gl.VERTEX_SHADER);
-    gl.shaderSource(vertShader[0], vertCode);
-    gl.compileShader(vertShader[0]);
-    
 
-    
   
-    fragShader[0] = gl.createShader(gl.FRAGMENT_SHADER);
-    gl.shaderSource(fragShader[0], fragCode);
-    gl.compileShader(fragShader[0]);
+    createProgram(0, vertCode, fragCode);
     
+    
+     
 
-    
-  
-    shaderProgram[0] = gl.createProgram();
-    
-    gl.attachShader(shaderProgram[0], vertShader[0]);
-    gl.attachShader(shaderProgram[0], fragShader[0]);
-    gl.linkProgram(shaderProgram[0]);
-    gl.useProgram(shaderProgram[0]);
-    
-    
-    
-    
-    
-    
-    
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
-    
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
              
     
     var coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
@@ -281,7 +280,11 @@ function gameLoop(currentTime) {
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
     
         gl.clear(gl.COLOR_BUFFER_BIT);
-        
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
+        gl.useProgram(shaderProgram[0]);
+      
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     
         gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
