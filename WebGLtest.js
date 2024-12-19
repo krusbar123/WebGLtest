@@ -37,6 +37,10 @@ var groundLoc;
 
 var textureLoc;
 
+var coord;
+
+var coord2;
+
 const images = ["Assets/Body_Black.png"];
 
 let loadedImages = [];
@@ -222,14 +226,14 @@ function main() {
      
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);        
-    var coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
+    coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
     gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord);
 
 
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);        
-    var coord2 = gl.getAttribLocation(shaderProgram[1], "coords");
+    coord2 = gl.getAttribLocation(shaderProgram[1], "coords");
     gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord2);
 
