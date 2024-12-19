@@ -382,6 +382,10 @@ function gameLoop(currentTime) {
             tankX[0] - tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
             tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
             tankX[0] + tankSize/2.0, tankY[0] + tankSize/2.0, 0.0];
+
+        
+        gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
+        gl.enableVertexAttribArray(coord2);
         
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);
     
@@ -393,8 +397,7 @@ function gameLoop(currentTime) {
 
         gl.useProgram(shaderProgram[1]);
 
-        gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
-        gl.enableVertexAttribArray(coord2);
+        
 
         textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
         gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
