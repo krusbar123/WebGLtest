@@ -220,7 +220,7 @@ function main() {
         'precision highp float;' +
         'uniform sampler2D texture;' +
         'void main(void) {' +
-        'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
+        'gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);' +            //texture2D(texture, gl_FragCoord.xy)
         '}';
 
     createProgram(1, vertCode, fragCode);
