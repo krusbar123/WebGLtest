@@ -17,7 +17,7 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
-const tankSize = 160;
+const tankSize = 16;
     
 
 var vertCode;
@@ -369,9 +369,10 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
-        gl.useProgram(shaderProgram[0]);
         gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord);
+        gl.useProgram(shaderProgram[0]);
+
 
          // Pass texture to the shader
         groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
@@ -390,17 +391,18 @@ function gameLoop(currentTime) {
             tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
             tankX[0] + tankSize/2.0, tankY[0] + tankSize/2.0, 0.0];
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
+
         
         gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord2);
         
-        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);
+        
     
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
-
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
-    
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
+        
 
         gl.useProgram(shaderProgram[1]);
 
