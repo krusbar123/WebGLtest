@@ -363,9 +363,9 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
+        gl.useProgram(shaderProgram[0]);
         gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord);
-        gl.useProgram(shaderProgram[0]);
 
          // Pass texture to the shader
         groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
@@ -391,10 +391,10 @@ function gameLoop(currentTime) {
     
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
 
+        gl.useProgram(shaderProgram[1]);
+
         gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord2);
-
-        gl.useProgram(shaderProgram[1]);
 
         textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
         gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
