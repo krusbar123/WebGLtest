@@ -362,6 +362,7 @@ function gameLoop(currentTime) {
     
         gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
+        /*
 
         let verts = [
             tankX[0] - tankSize/2.0, tankY[0] + tankSize/2.0, 0.0,
@@ -382,8 +383,8 @@ function gameLoop(currentTime) {
         textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
         gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
 
-        //gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
-    
+        gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+        */
     
 
         
