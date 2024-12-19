@@ -291,7 +291,7 @@ function main() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
 
-
+    /*
     texture[1] = gl.createTexture();
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, texture[1]);
@@ -304,7 +304,7 @@ function main() {
     // Set texture parameters for non-power-of-two (NPOT) textures
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
+    */
     
   
     // Pass texture to the shader
@@ -312,11 +312,12 @@ function main() {
     groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
     gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
 
+    /*
         // Pass texture to the shader
     gl.useProgram(shaderProgram[1]);
     textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
-    gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
-    
+    gl.uniform1i(textureLoc, 1);  // 1 corresponds to TEXTURE0
+    */
     
         
     // Set clear color to black, fully opaque
