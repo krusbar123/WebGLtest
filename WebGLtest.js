@@ -353,6 +353,7 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
+        gl.enableVertexAttribArray(coord);
         gl.useProgram(shaderProgram[0]);
 
          // Pass texture to the shader
