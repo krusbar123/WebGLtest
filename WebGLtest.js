@@ -359,14 +359,32 @@ function gameLoop(currentTime) {
 
 
 
-
-
-
-
-
-
+        
     
-        let verts = [
+             //Update ground texture
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture[0]);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+    
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
+        gl.useProgram(shaderProgram[0]);
+        gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
+        gl.enableVertexAttribArray(coord);
+
+         // Pass texture to the shader
+        groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
+        gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
+      
+        //gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+    
+        //gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+
+
+
+
+                let verts = [
             tankX[0] - tankSize/2.0, tankY[0] + tankSize/2.0, 0.0,
             tankX[0] - tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
             tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
@@ -392,43 +410,6 @@ function gameLoop(currentTime) {
         gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
 
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-             //Update ground texture
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, texture[0]);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, canvas.width, canvas.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, ground);
-    
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
-        gl.useProgram(shaderProgram[0]);
-        gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
-        gl.enableVertexAttribArray(coord);
-
-         // Pass texture to the shader
-        groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
-        gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
-      
-        //gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-    
-        gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
         
 
