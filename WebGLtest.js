@@ -378,9 +378,9 @@ function gameLoop(currentTime) {
         groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
         gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
       
-        //gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     
-        //gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
+        gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, ground);
 
 
 
