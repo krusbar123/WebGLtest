@@ -214,7 +214,7 @@ function main() {
         'uniform sampler2D texture;' +
         'void main(void) {' +
         'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
-        '}b';
+        '}';
 
     createProgram(1, vertCode, fragCode);
     
@@ -382,7 +382,7 @@ function gameLoop(currentTime) {
         textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
         gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
 
-        gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+        //gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
     
     
 
