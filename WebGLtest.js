@@ -162,35 +162,6 @@ function main() {
     index_buffer[1] = gl.createBuffer();
 
 
-
-
-
-
-
-
-    
-    vertCode = 
-        'attribute vec3 coords;' +
-        'void main(void) {' +
-        'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
-        '}';
-
-
-    fragCode = 
-        'precision highp float;' +
-        'uniform sampler2D texture;' +
-        'void main(void) {' +
-        'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
-        '}';
-
-    createProgram(1, vertCode, fragCode);
-
-
-
-
-    
-    
-
         
         
     
@@ -232,6 +203,27 @@ function main() {
 
   
     createProgram(0, vertCode, fragCode);
+
+
+
+
+
+
+    vertCode = 
+        'attribute vec3 coords;' +
+        'void main(void) {' +
+        'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
+        '}';
+
+
+    fragCode = 
+        'precision highp float;' +
+        'uniform sampler2D texture;' +
+        'void main(void) {' +
+        'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
+        '}';
+
+    createProgram(1, vertCode, fragCode);
 
 
 
@@ -371,6 +363,7 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
+        gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord);
         gl.useProgram(shaderProgram[0]);
 
@@ -397,6 +390,9 @@ function gameLoop(currentTime) {
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
     
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
+
+        gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
+        gl.enableVertexAttribArray(coord2);
 
         gl.useProgram(shaderProgram[1]);
 
