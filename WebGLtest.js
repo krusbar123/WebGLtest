@@ -160,6 +160,35 @@ function main() {
     vertex_buffer[1] = gl.createBuffer();
 
     index_buffer[1] = gl.createBuffer();
+
+
+
+
+
+
+
+
+    
+    vertCode = 
+        'attribute vec3 coords;' +
+        'void main(void) {' +
+        'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
+        '}';
+
+
+    fragCode = 
+        'precision highp float;' +
+        'uniform sampler2D texture;' +
+        'void main(void) {' +
+        'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
+        '}';
+
+    createProgram(1, vertCode, fragCode);
+
+
+
+
+    
     
 
         
@@ -206,21 +235,6 @@ function main() {
 
 
 
-    vertCode = 
-        'attribute vec3 coords;' +
-        'void main(void) {' +
-        'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
-        '}';
-
-
-    fragCode = 
-        'precision highp float;' +
-        'uniform sampler2D texture;' +
-        'void main(void) {' +
-        'gl_FragColor = texture2D(texture, gl_FragCoord.xy);' +
-        '}';
-
-    createProgram(1, vertCode, fragCode);
     
     
      
