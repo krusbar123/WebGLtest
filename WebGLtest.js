@@ -227,7 +227,7 @@ function main() {
         'uniform vec2 textureScale;' +
         'void main(void) {' +
         'vec2 texCoord = (gl_FragCoord.xy) * textureScale / vec2(640.0, 480.0);' +
-        'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0);' +            //texture2D(texture, gl_FragCoord.xy)
+        'gl_FragColor = texture2D(texture, gl_FragCoord.xy / vec2(640.0, 480.0));' +            //texture2D(texture, gl_FragCoord.xy)
         '}';
 
     createProgram(1, vertCode, fragCode);
