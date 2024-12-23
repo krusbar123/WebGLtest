@@ -30,8 +30,8 @@ var vertShader = [];
 var fragShader = [];
 var shaderProgram = [];
 
-var tankX = [0];
-var tankY = [0];
+var tankX = [100];
+var tankY = [200];
 
 var groundLoc;
 
