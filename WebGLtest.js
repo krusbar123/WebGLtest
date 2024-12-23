@@ -317,20 +317,7 @@ function main() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     
-    
-  
-    // Pass texture to the shader
-    gl.useProgram(shaderProgram[0]);
-    groundLoc = gl.getUniformLocation(shaderProgram[0], "ground");
-    gl.uniform1i(groundLoc, 0);  // 0 corresponds to TEXTURE0
 
-    
-        // Pass texture to the shader
-    gl.useProgram(shaderProgram[1]);
-    textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
-    gl.uniform1i(textureLoc, 1);  // 1 corresponds to TEXTURE0
-    
-    
         
     // Set clear color to black, fully opaque
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
