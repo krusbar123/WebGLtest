@@ -37,6 +37,10 @@ var groundLoc;
 
 var textureLoc;
 
+var texOffLoc;
+
+var texScaleLoc;
+
 var coord;
 
 var coord2;
@@ -222,7 +226,8 @@ function main() {
         'uniform vec2 textureOffset;' +
         'uniform vec2 textureScale;' +
         'void main(void) {' +
-        'gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);' +            //texture2D(texture, gl_FragCoord.xy)
+        'vec2 texCoord = (gl_FragCoord.xy - textureOffset) * textureScale;' +
+        'gl_FragColor = texture2D(texture, texCoord);' +            //texture2D(texture, gl_FragCoord.xy)
         '}';
 
     createProgram(1, vertCode, fragCode);
@@ -398,7 +403,13 @@ function gameLoop(currentTime) {
         
 
         textureLoc = gl.getUniformLocation(shaderProgram[1], "texture");
-        gl.uniform1i(textureLoc, 1);  // 0 corresponds to TEXTURE0
+        gl.uniform1i(textureLoc, 1);  // 1 corresponds to TEXTURE1
+
+        texOffLoc = gl.getUniformLocation(shaderProgram[1], "textureOffset");
+        gl.uniform2f(texOffLoc, new Float32Array([tankX[0] - tankSize/2, tankY[0] - tankSize/2]));
+
+        texScaleLoc = gl.getUniformLocation(shaderProgram[1], "textureScale");
+        gl.uniform2f(texScaleLoc, new Float32Array([loadedImages[0].naturalWidth / tankSize, loadedImages[0].naturalWidth / tankSize]));
 
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
 
