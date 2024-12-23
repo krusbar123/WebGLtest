@@ -406,10 +406,10 @@ function gameLoop(currentTime) {
         gl.uniform1i(textureLoc, 1);  // 1 corresponds to TEXTURE1
 
         texOffLoc = gl.getUniformLocation(shaderProgram[1], "textureOffset");
-        gl.uniform2f(texOffLoc, new Float32Array([tankX[0] - tankSize/2, tankY[0] - tankSize/2]));
+        gl.uniform2f(texOffLoc, tankX[0] - tankSize/2, tankY[0] - tankSize/2);
 
         texScaleLoc = gl.getUniformLocation(shaderProgram[1], "textureScale");
-        gl.uniform2f(texScaleLoc, new Float32Array([loadedImages[0].naturalWidth / tankSize, loadedImages[0].naturalWidth / tankSize]));
+        gl.uniform2f(texScaleLoc, loadedImages[0].naturalWidth / tankSize, loadedImages[0].naturalWidth / tankSize);
 
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
 
