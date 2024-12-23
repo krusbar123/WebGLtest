@@ -17,7 +17,7 @@ const frameInterval = 1000.0 / targetFPS; // Milliseconds per frame
 let lastFrameTime = 0; // Timestamp of the last rendered frame
 let FPS;
 
-const tankSize = 16;
+const tankSize = 320;
     
 
 var vertCode;
