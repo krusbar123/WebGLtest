@@ -135,10 +135,10 @@ function main() {
     }
 
     vertices = [
-        -1.0, 1.0, 0.0,
-        -1.0, -1.0, 0.0,
-        1.0, -1.0, 0.0,
-        1.0, 1.0, 0.0
+        -1.0, 1.0,
+        -1.0, -1.0,
+        1.0, -1.0,
+        1.0, 1.0
     ];
     
     indices = [0, 1, 2, 2, 3, 0];
@@ -380,10 +380,10 @@ function gameLoop(currentTime) {
 
 
                 let verts = [
-            tankX[0] - tankSize/2.0, tankY[0] + tankSize/2.0, 0.0,
-            tankX[0] - tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
-            tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0, 0.0,
-            tankX[0] + tankSize/2.0, tankY[0] + tankSize/2.0, 0.0];
+            tankX[0] - tankSize/2.0, tankY[0] + tankSize/2.0,
+            tankX[0] - tankSize/2.0, tankY[0] - tankSize/2.0,
+            tankX[0] + tankSize/2.0, tankY[0] - tankSize/2.0,
+            tankX[0] + tankSize/2.0, tankY[0] + tankSize/2.0];
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
