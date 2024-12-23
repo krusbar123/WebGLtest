@@ -170,9 +170,9 @@ function main() {
         
     
     vertCode = 
-        'attribute vec3 coordinates;' +
+        'attribute vec2 coordinates;' +
         'void main(void) {' +
-        'gl_Position = vec4(coordinates, 1.0);' +
+        'gl_Position = vec4(coordinates, 0.0, 1.0);' +
         '}';
 
 
@@ -214,9 +214,9 @@ function main() {
 
 
     vertCode = 
-        'attribute vec3 coords;' +
+        'attribute vec2 coords;' +
         'void main(void) {' +
-        'gl_Position = vec4(coords / vec3(640.0, 480.0, 1.0), 1.0);' +
+        'gl_Position = vec4(coords / vec2(640.0, 480.0), 0.0, 1.0);' +
         '}';
 
 
@@ -240,14 +240,14 @@ function main() {
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);        
     coord = gl.getAttribLocation(shaderProgram[0], "coordinates");
-    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
+    gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord);
 
 
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[1]);        
     coord2 = gl.getAttribLocation(shaderProgram[1], "coords");
-    gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
+    gl.vertexAttribPointer(coord2, 2, gl.FLOAT, false, 0, 0);          
     gl.enableVertexAttribArray(coord2);
 
     noise.seed(Math.random());
@@ -363,7 +363,7 @@ function gameLoop(currentTime) {
 
         gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer[0]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[0]);
-        gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);          
+        gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord);
         gl.useProgram(shaderProgram[0]);
 
@@ -389,7 +389,7 @@ function gameLoop(currentTime) {
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer[1]);
 
         
-        gl.vertexAttribPointer(coord2, 3, gl.FLOAT, false, 0, 0);          
+        gl.vertexAttribPointer(coord2, 2, gl.FLOAT, false, 0, 0);          
         gl.enableVertexAttribArray(coord2);
         
         
