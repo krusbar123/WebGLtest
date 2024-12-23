@@ -226,7 +226,7 @@ function main() {
         'uniform vec2 textureOffset;' +
         'uniform vec2 textureScale;' +
         'void main(void) {' +
-        'vec2 texCoord = (gl_FragCoord.xy - textureOffset);' + // * textureScale
+        'vec2 texCoord = (gl_FragCoord.xy - textureOffset) * textureScale;' +
         'gl_FragColor = texture2D(texture, texCoord);' +            //texture2D(texture, gl_FragCoord.xy)
         '}';
 
