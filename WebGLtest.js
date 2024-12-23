@@ -219,6 +219,8 @@ function main() {
     fragCode = 
         'precision highp float;' +
         'uniform sampler2D texture;' +
+        'uniform vec2 textureOffset;' +
+        'uniform vec2 textureScale;' +
         'void main(void) {' +
         'gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);' +            //texture2D(texture, gl_FragCoord.xy)
         '}';
